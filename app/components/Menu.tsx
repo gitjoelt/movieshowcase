@@ -1,0 +1,25 @@
+export default function Menu({ nav }: { nav: string }) {
+  const categories = [
+    "horror",
+    "classic",
+    "comedy",
+    "drama",
+    "family",
+    "mystery",
+    "animation",
+    "western",
+  ];
+  categories.sort();
+
+  return (
+    <ul className="menu menu-horizontal bg-slate-700">
+      {categories.map((el, index) => (
+        <li key={index}>
+          <a className={el === nav ? "active" : ""} href={`?${el}`}>
+            {el}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
