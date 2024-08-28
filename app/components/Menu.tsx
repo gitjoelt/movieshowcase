@@ -1,16 +1,6 @@
-export default function Menu({ nav }: { nav: string }) {
-  const categories = [
-    "horror",
-    "classic",
-    "comedy",
-    "drama",
-    "family",
-    "mystery",
-    "animation",
-    "western",
-  ];
-  categories.sort();
+import { categories } from "../constants/constants";
 
+export default function Menu({ nav }: { nav: string }) {
   return (
     <ul className="menu menu-horizontal bg-slate-700">
       {categories.map((el, index) => (

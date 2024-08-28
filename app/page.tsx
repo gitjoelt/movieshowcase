@@ -1,12 +1,14 @@
 import Menu from "./components/Menu";
 import MovieCards from "./components/MovieCards";
+import * as constants from "./constants/constants";
 
-export default async function Home({
+export default function Home({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const [nav] = Object.keys(searchParams);
+  let [nav] = Object.keys(searchParams);
+  nav = constants.categories.includes(nav) ? nav : "animation";
   return (
     <div className="container mx-auto pt-6">
       <section className="prose max-w-none">
