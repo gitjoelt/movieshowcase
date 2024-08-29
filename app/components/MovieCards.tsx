@@ -1,17 +1,12 @@
-interface Movie {
-  id: string;
-  posterURL: string;
-  title: string;
-  imdbId: string;
-}
+"use client";
+import type { Movie } from "../constants/types";
 
-export default async function MovieCards({ catalogue }: { catalogue: string }) {
+export default function MovieCards({ catalogue }: { catalogue: Movie[] }) {
   if (!catalogue) return;
-  const res = await fetch(`https://api.sampleapis.com/movies/${catalogue}`);
-  const data: Movie[] = await res.json();
+
   return (
     <section className="flex flex-row flex-wrap gap-6 pt-6">
-      {data.map((record) => (
+      {catalogue.map((record) => (
         <div key={record.id} className="card bg-base-100 w-72 shadow-xl">
           <figure>
             <img src={record.posterURL} />
@@ -26,7 +21,6 @@ export default async function MovieCards({ catalogue }: { catalogue: string }) {
               >
                 IMDB
               </a>
-              <div className="badge badge-primary font-bold">{catalogue}</div>
             </div>
           </div>
         </div>
